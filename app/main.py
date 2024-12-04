@@ -11,11 +11,11 @@ class Animal:
             health: int = 100,
             hidden: bool = False
     ) -> None:
-
         self.health = health
         self.name = name
         self.hidden = hidden
         if self.health >= 0:
+            self.alive = True
             Animal.alive.append(self)
 
     def __repr__(self) -> str:
@@ -39,4 +39,5 @@ class Carnivore(Animal):
         if isinstance(other, Herbivore) and not other.hidden:
             other.health -= 50
         if other.health <= 0:
+            other.alive = False
             Animal.alive.remove(other)
